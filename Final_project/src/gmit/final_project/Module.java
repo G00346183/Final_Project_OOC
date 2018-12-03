@@ -1,5 +1,4 @@
 package gmit.final_project;
-
 public class Module
 {
 	public String moduleName;

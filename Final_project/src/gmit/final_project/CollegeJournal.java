@@ -1,14 +1,29 @@
 package gmit.final_project;
 
+import java.util.ArrayList;
 public class CollegeJournal
 {
+	public static ArrayList <Module> modules = new ArrayList<Module>();
+	public static ArrayList <Note> notes   = new ArrayList<Note>();
+	
 	public static void main(String [] args)
 	{
 		Module m1 = new Module("Programming","P");
 		Module m2 = new Module("Testing","T");
 		Module m3 = new Module("Maths","M");
-		Module m4 = new Module("English","E");
 
+		modules.add(m1);
+		modules.add(m2);
+		modules.add(m3);
+
+		createModule("French", "FR");
+		createModule("Business", "BS");
+		createModule("Tech Drawing", "TD");
+
+		for(int i=0;i<modules.size();i++)
+		{
+			System.out.println(modules.get(i).getModuleName() + "\t" + modules.get(i).getModuleShortName());
+		}
 		//System.out.println(m1.getModuleName());
 		//System.out.println(m2.getModuleName());
 
@@ -20,13 +35,30 @@ public class CollegeJournal
 		Note n3 = new Note("Programming","Lab 3");
 		Note n4 = new Note("Testing","Tutorial 2");
 
-		//System.out.println(n3.getModuleName() + "\t" + n3.getNoteName());
-		//System.out.println(n4.getModuleName() + "\t" + n3.getNoteName());
 
 		n3.setNoteContents("This is an example note to see if this works");
 		n4.setNoteContents("Another example note to see if this works");
 
 		System.out.println(n3.fullNote());
 		System.out.println(n4.fullNote());
+	}
+	public static void createModule(String mn, String sn)
+	{
+		boolean exists = false;
+		for(int i=0;i<modules.size();i++){
+			if(mn==modules.get(i).getModuleName() || sn==modules.get(i).getModuleShortName())
+			{
+				System.out.println("Module name or shortname already exists, Module not created");
+				exists = true;
+			}
+		}
+		if(!exists){
+			Module temp = new Module(mn, sn);
+			modules.add(temp);
+			System.out.println("Module Successfully Added to ArrayList");
+		} else {
+			System.out.println("Not Created");
+		}
+
 	}
 }

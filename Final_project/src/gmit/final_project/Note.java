@@ -11,6 +11,12 @@ public class Note
 		forModule = m;
 		noteName = name;
 	}
+	public Note(String m, String name,String c)
+	{
+		forModule = m;
+		noteName = name;
+		contents = c;
+	}
 	public String getNoteName()
 	{
 		return noteName;
